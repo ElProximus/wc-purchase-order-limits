@@ -1,0 +1,707 @@
+/**
+ * Purchase Order Request Page Styles
+ */
+
+/* PO Request Wrapper */
+.wcpol-po-request-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Header Section */
+.wcpol-po-request-header {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.wcpol-po-request-header h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.wcpol-limit-exceeded-notice {
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.wcpol-limit-exceeded-notice p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #856404;
+}
+
+.wcpol-limit-exceeded-notice p:first-child {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Content Section */
+.wcpol-po-request-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+/* Switch to single column earlier to prevent cut-off */
+@media (max-width: 860px) {
+    .wcpol-po-request-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .wcpol-po-request-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Cart Summary */
+.wcpol-cart-summary {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.wcpol-cart-summary h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.wcpol-cart-items {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.wcpol-cart-items thead {
+    background: #007cba;
+    color: white;
+}
+
+.wcpol-cart-items th,
+.wcpol-cart-items td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.wcpol-cart-items tbody tr:hover {
+    background: #f5f5f5;
+}
+
+.wcpol-cart-items .product-name a {
+    color: #007cba;
+    text-decoration: none;
+}
+
+.wcpol-cart-items .product-name a:hover {
+    text-decoration: underline;
+}
+
+.wcpol-cart-items tfoot {
+    background: #f8f9fa;
+    font-weight: bold;
+}
+
+.wcpol-cart-items tfoot .cart-subtotal th,
+.wcpol-cart-items tfoot .shipping th,
+.wcpol-cart-items tfoot .tax th {
+    font-weight: normal;
+}
+
+.wcpol-cart-items tfoot .order-total {
+    font-size: 18px;
+    background: #e9ecef;
+}
+
+.wcpol-cart-items tfoot .order-total td {
+    color: #007cba;
+}
+
+/* PO Form */
+.wcpol-po-form {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.wcpol-form-section h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.wcpol-form-row {
+    margin-bottom: 20px;
+}
+
+.wcpol-form-row label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
+
+.wcpol-form-row input[type="text"],
+.wcpol-form-row input[type="date"],
+.wcpol-form-row textarea,
+.wcpol-form-row select {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+.wcpol-form-row input:focus,
+.wcpol-form-row textarea:focus {
+    outline: none;
+    border-color: #007cba;
+    box-shadow: 0 0 0 2px rgba(0,124,186,0.1);
+}
+
+.wcpol-form-row textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Form Actions */
+.wcpol-form-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+    flex-wrap: wrap;
+}
+
+.wcpol-form-actions .button {
+    padding: 12px 30px;
+    font-size: 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+}
+
+.wcpol-form-actions .wcpol-submit-po {
+    background: #007cba;
+    color: white;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.wcpol-form-actions .wcpol-submit-po:hover {
+    background: #005a87;
+}
+
+.wcpol-form-actions .wcpol-back-to-cart {
+    background: #6c757d;
+    color: white;
+}
+
+.wcpol-form-actions .wcpol-back-to-cart:hover {
+    background: #545b62;
+}
+
+.wcpol-reduce-cart-link {
+    margin-left: auto;
+    color: #007cba;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.wcpol-reduce-cart-link:hover {
+    text-decoration: underline;
+}
+
+/* Messages */
+.wcpol-message {
+    padding: 15px;
+    border-radius: 4px;
+    margin-top: 20px;
+    display: none;
+}
+
+.wcpol-message.success {
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+
+.wcpol-message.error {
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+/* Loading State */
+.wcpol-loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.wcpol-loading::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #007cba;
+    border-radius: 50%;
+    animation: wcpol-spin 1s linear infinite;
+}
+
+@keyframes wcpol-spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Cart Page Message */
+.wcpol-po-message {
+    margin-top: 10px;
+    color: #856404;
+    font-size: 14px;
+}
+
+/* Thank You Page Styles */
+.wcpol-po-thank-you {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.wcpol-success-message {
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    border-radius: 8px;
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.wcpol-success-message h2 {
+    color: #155724;
+    margin-bottom: 15px;
+}
+
+.wcpol-po-number {
+    font-size: 18px;
+    color: #155724;
+}
+
+.wcpol-po-details,
+.wcpol-next-steps {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.wcpol-po-details h3,
+.wcpol-next-steps h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.wcpol-po-summary {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.wcpol-po-summary th {
+    text-align: left;
+    padding: 8px;
+    font-weight: normal;
+    color: #666;
+}
+
+.wcpol-po-summary td {
+    padding: 8px;
+    font-weight: 600;
+}
+
+.wcpol-status {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.wcpol-status-pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.wcpol-status-approved {
+    background: #d4edda;
+    color: #155724;
+}
+
+.wcpol-status-rejected {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.wcpol-next-steps ul {
+    list-style: none;
+    padding: 0;
+}
+
+.wcpol-next-steps li {
+    padding: 10px 0;
+    padding-left: 30px;
+    position: relative;
+    border-bottom: 1px solid #eee;
+}
+
+.wcpol-next-steps li:last-child {
+    border-bottom: none;
+}
+
+.wcpol-next-steps li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #28a745;
+    font-weight: bold;
+}
+
+.wcpol-po-actions {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.wcpol-po-actions .button {
+    padding: 10px 20px;
+    background: #007cba;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.wcpol-po-actions .button:hover {
+    background: #005a87;
+}
+
+/* Limit Status Widget */
+.wcpol-limit-status {
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.wcpol-limit-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.wcpol-limit-label {
+    font-weight: 600;
+    color: #666;
+}
+
+.wcpol-limit-amount {
+    font-weight: bold;
+    color: #333;
+}
+
+.wcpol-limit-progress {
+    height: 20px;
+    background: #e9ecef;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.wcpol-limit-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #28a745 0%, #ffc107 80%, #dc3545 100%);
+    transition: width 0.3s;
+}
+
+.wcpol-limit-remaining {
+    text-align: center;
+    font-size: 14px;
+}
+
+.wcpol-remaining-positive {
+    color: #28a745;
+}
+
+.wcpol-remaining-exceeded {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+/* ========================================
+   Address Sections
+   ======================================== */
+
+.wcpol-address-section {
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.wcpol-address-section h3 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 20px;
+    color: #333;
+}
+
+/* Saved Address Card */
+.wcpol-default-address-card {
+    background: #f7fafc;
+    border: 2px solid #007cba;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 15px;
+}
+
+.wcpol-address-nickname {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #fff;
+    background: #007cba;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.wcpol-address-name {
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 4px;
+}
+
+.wcpol-address-line {
+    color: #4a5568;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Address Dropdown */
+.wcpol-address-change-row {
+    margin-bottom: 15px;
+}
+
+.wcpol-address-select {
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #fff;
+    color: #2d3748;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%234a5568' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+    height: auto;
+    min-height: 44px;
+}
+
+.wcpol-address-select:hover {
+    border-color: #007cba;
+}
+
+.wcpol-address-select:focus {
+    outline: none;
+    border-color: #007cba;
+    box-shadow: 0 0 0 2px rgba(0, 124, 186, 0.1);
+}
+
+/* New Address Form */
+.wcpol-new-address-form {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.wcpol-form-row-group {
+    display: flex;
+    gap: 12px;
+}
+
+.wcpol-form-row-half {
+    flex: 1;
+}
+
+.wcpol-form-row-third {
+    flex: 1;
+}
+
+.wcpol-form-row .required {
+    color: #dc3545;
+}
+
+.wcpol-form-row input.field-error,
+.wcpol-form-row select.field-error {
+    border-color: #dc3545;
+}
+
+/* Billing Same as Shipping */
+.wcpol-billing-same-row {
+    margin-bottom: 15px;
+}
+
+.wcpol-checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    color: #333;
+}
+
+.wcpol-checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+}
+
+.wcpol-billing-fields {
+    margin-top: 15px;
+}
+
+/* Cancel new address link */
+.wcpol-cancel-new-address {
+	font-size: 14px;
+	color: #718096;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.wcpol-cancel-new-address:hover {
+	color: #dc3545;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .wcpol-po-request-header h2 {
+        font-size: 24px;
+    }
+    
+    .wcpol-cart-items {
+        font-size: 14px;
+    }
+    
+    .wcpol-cart-items th,
+    .wcpol-cart-items td {
+        padding: 8px;
+    }
+    
+    .wcpol-form-row-group {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .wcpol-form-actions {
+        flex-direction: column;
+    }
+
+    .wcpol-form-actions .button,
+    .wcpol-reduce-cart-link,
+    .wcpol-form-actions .wcpol-submit-po {
+        width: 100%;
+        text-align: center;
+        margin-left: 0;
+    }
+    
+    .wcpol-po-actions {
+        flex-direction: column;
+    }
+    
+    .wcpol-po-actions .button {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+    .wcpol-po-request-wrapper {
+        padding: 10px;
+        width: 100%;
+        overflow-x: hidden;
+    }
+    
+    .wcpol-cart-summary,
+    .wcpol-po-form {
+        padding: 15px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    /* Prevent form sections from overflowing */
+    .wcpol-form-section {
+        width: 100%;
+        overflow-wrap: break-word;
+    }
+    
+    .wcpol-form-actions .wcpol-submit-po {
+        width: 100%;
+        max-width: 100%;
+        white-space: normal;
+        padding: 12px 10px;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 455px) {
+    .wcpol-cart-summary h3,
+    .wcpol-po-form h3 {
+        font-size: 20px;
+    }
+    
+    .wcpol-cart-summary,
+    .wcpol-po-form {
+        padding: 10px;
+    }
+}

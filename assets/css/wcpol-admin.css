@@ -1,0 +1,278 @@
+/**
+ * Admin CSS for WC Purchase Order Limits
+ */
+
+/* Admin Dashboard */
+.wcpol-admin-wrap {
+    margin: 20px 20px 20px 0;
+}
+
+/* Stats boxes */
+.wcpol-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.wcpol-stat-box {
+    background: white;
+    border: 1px solid #ccd0d4;
+    padding: 20px;
+    text-align: center;
+    border-radius: 3px;
+}
+
+.wcpol-stat-value {
+    font-size: 32px;
+    font-weight: bold;
+    color: #23282d;
+    display: block;
+}
+
+.wcpol-stat-label {
+    color: #666;
+    font-size: 14px;
+    margin-top: 5px;
+    display: block;
+}
+
+/* PO List Table */
+.wcpol-po-table {
+    background: white;
+    border: 1px solid #ccd0d4;
+    border-radius: 3px;
+}
+
+.wcpol-po-table th {
+    background: #f1f1f1;
+    font-weight: bold;
+}
+
+/* Status badges */
+.wcpol-status {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.wcpol-status-pending {
+    background: #FFC107;
+    color: #333;
+}
+
+.wcpol-status-approved {
+    background: #4CAF50;
+    color: white;
+}
+
+.wcpol-status-rejected {
+    background: #f44336;
+    color: white;
+}
+
+.wcpol-status-draft {
+    background: #9E9E9E;
+    color: white;
+}
+
+.wcpol-status-partial {
+    background: #2196F3;
+    color: white;
+}
+
+/* Settings page */
+.wcpol-settings-section {
+    background: white;
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #ccd0d4;
+    border-radius: 3px;
+}
+
+.wcpol-settings-section h2 {
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* User limits page */
+.wcpol-add-limit-form {
+    background: white;
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #ccd0d4;
+    border-radius: 3px;
+}
+
+.wcpol-form-row {
+    margin-bottom: 15px;
+}
+
+.wcpol-form-row label {
+    display: inline-block;
+    width: 150px;
+    font-weight: bold;
+}
+
+.wcpol-form-row input,
+.wcpol-form-row select {
+    min-width: 200px;
+}
+
+/* PO Detail */
+.wcpol-po-detail-wrap {
+    background: white;
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #ccd0d4;
+    border-radius: 3px;
+}
+
+.wcpol-po-meta-box {
+    background: #f9f9f9;
+    padding: 15px;
+    margin: 15px 0;
+    border-left: 4px solid #0073aa;
+}
+
+.wcpol-po-items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.wcpol-po-items-table th {
+    background: #f1f1f1;
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.wcpol-po-items-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.wcpol-po-history {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #ddd;
+}
+
+.wcpol-history-entry {
+    padding: 10px;
+    margin: 10px 0;
+    background: #f9f9f9;
+    border-left: 3px solid #666;
+}
+
+.wcpol-history-date {
+    color: #666;
+    font-size: 12px;
+}
+
+.wcpol-history-action {
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+/* Action buttons */
+.wcpol-actions {
+    margin: 20px 0;
+}
+
+.wcpol-actions .button {
+    margin-right: 10px;
+}
+
+.wcpol-approve-btn {
+    background: #4CAF50 !important;
+    color: white !important;
+    border-color: #4CAF50 !important;
+}
+
+.wcpol-reject-btn {
+    background: #f44336 !important;
+    color: white !important;
+    border-color: #f44336 !important;
+}
+
+/* Notices */
+.wcpol-notice {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 3px;
+}
+
+.wcpol-notice-success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.wcpol-notice-error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.wcpol-notice-info {
+    background: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+/* Inline Messages */
+.wcpol-inline-error {
+    color: #721c24;
+    font-size: 13px;
+    display: inline-block;
+    animation: wcpol-fadeIn 0.3s ease-in;
+}
+
+.wcpol-inline-success {
+    color: #155724;
+    font-size: 13px;
+    display: inline-block;
+    animation: wcpol-fadeIn 0.3s ease-in;
+}
+
+@keyframes wcpol-fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Loading spinner */
+.wcpol-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #0073aa;
+    border-radius: 50%;
+    animation: wcpol-spin 1s linear infinite;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+@keyframes wcpol-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive tables */
+@media screen and (max-width: 782px) {
+    .wcpol-po-table,
+    .wcpol-po-items-table {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    .wcpol-stats-grid {
+        grid-template-columns: 1fr;
+    }
+}

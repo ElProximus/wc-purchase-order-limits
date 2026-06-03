@@ -1,0 +1,623 @@
+/**
+ * Public-facing CSS for WC Purchase Order Limits
+ */
+
+/* Cart limit display */
+.wcpol-limit-info {
+    background: #f7f7f7;
+}
+
+.wcpol-limit-display {
+    padding: 10px 0;
+}
+
+.wcpol-limit-text {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.wcpol-limit-progress {
+    background: #e0e0e0;
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.wcpol-limit-progress-bar {
+    background: linear-gradient(90deg, #4CAF50 0%, #FFC107 70%, #f44336 100%);
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+.wcpol-limit-remaining {
+    color: #4CAF50;
+    font-size: 0.9em;
+}
+
+.wcpol-limit-exceeded {
+    color: #f44336;
+    font-weight: bold;
+}
+
+/* Voluntary PO Button on Cart Page */
+.wcpol-voluntary-po-wrapper {
+    margin: 20px 0;
+    padding: 20px;
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.wcpol-voluntary-po-text {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.wcpol-voluntary-po-button {
+    background-color: #6c757d !important;
+    color: #fff !important;
+    border-color: #6c757d !important;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.wcpol-voluntary-po-button:hover {
+    background-color: #5a6268 !important;
+    border-color: #545b62 !important;
+}
+
+/* Voluntary PO Notice */
+.wcpol-voluntary-notice {
+    background-color: #d1ecf1;
+    border-left: 4px solid #17a2b8;
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+.wcpol-voluntary-notice p {
+    margin: 0;
+    color: #0c5460;
+}
+
+.wcpol-voluntary-notice p:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+/* Back to Checkout Button */
+.wcpol-back-to-checkout {
+    margin-left: 10px !important;
+    background-color: #6c757d !important;
+    color: #fff !important;
+    border-color: #6c757d !important;
+}
+
+.wcpol-back-to-checkout:hover {
+    background-color: #5a6268 !important;
+    border-color: #545b62 !important;
+    color: #fff !important;
+}
+
+/* PO Request Modal */
+.wcpol-modal {
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: none;
+}
+
+.wcpol-modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 5px;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.wcpol-modal-close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #999;
+}
+
+.wcpol-modal-close:hover {
+    color: #333;
+}
+
+.wcpol-form-group {
+    margin-bottom: 20px;
+}
+
+.wcpol-form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.wcpol-form-group input,
+.wcpol-form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.wcpol-cart-summary {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 3px;
+    margin: 20px 0;
+}
+
+.wcpol-cart-summary h3 {
+    margin-top: 0;
+}
+
+.wcpol-cart-summary table {
+    width: 100%;
+}
+
+.wcpol-cart-summary th {
+    text-align: left;
+    padding: 5px 0;
+}
+
+.wcpol-cart-summary td {
+    text-align: right;
+    padding: 5px 0;
+}
+
+.wcpol-form-actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.wcpol-form-actions button {
+    margin: 0 5px;
+}
+
+/* PO Request Button */
+.wcpol-po-request-wrapper {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.wcpol-request-po-btn {
+    background: #ff9800 !important;
+    color: white !important;
+    padding: 12px 30px !important;
+    font-size: 16px !important;
+}
+
+.wcpol-request-po-btn:hover {
+    background: #f57c00 !important;
+}
+
+.wcpol-po-message {
+    margin-top: 10px;
+    color: #666;
+    font-style: italic;
+}
+
+/* My Account PO List */
+.wcpol-account-pos {
+    margin: 20px 0;
+}
+
+.wcpol-status {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.wcpol-status-pending {
+    background: #FFC107;
+    color: #333;
+}
+
+.wcpol-status-approved {
+    background: #4CAF50;
+    color: white;
+}
+
+.wcpol-status-rejected {
+    background: #f44336;
+    color: white;
+}
+
+.wcpol-status-partial {
+    background: #2196F3;
+    color: white;
+}
+
+/* PO Detail Page */
+.wcpol-po-detail {
+    margin: 20px 0;
+}
+
+.wcpol-po-meta {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 3px;
+    margin: 20px 0;
+}
+
+.wcpol-po-meta p {
+    margin: 5px 0;
+}
+
+.wcpol-po-notes {
+    background: #fff3cd;
+    padding: 15px;
+    border-radius: 3px;
+    margin: 20px 0;
+    border-left: 4px solid #ffc107;
+}
+
+.wcpol-item-status {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 2px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.wcpol-item-status-pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.wcpol-item-status-approved {
+    background: #d4edda;
+    color: #155724;
+}
+
+.wcpol-item-status-rejected {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.wcpol-vendor-notes {
+    background: #f0f0f0;
+    font-style: italic;
+}
+
+.wcpol-vendor-notes td {
+    padding: 10px !important;
+}
+
+/* PO History */
+.wcpol-po-history {
+    border-left: 3px solid #ddd;
+    padding-left: 20px;
+    margin: 20px 0;
+}
+
+.wcpol-history-item {
+    position: relative;
+    padding: 10px 0;
+}
+
+.wcpol-history-item:before {
+    content: '';
+    position: absolute;
+    left: -23px;
+    top: 15px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #666;
+}
+
+.wcpol-history-date {
+    color: #999;
+    font-size: 12px;
+    margin-right: 10px;
+}
+
+.wcpol-history-action {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.wcpol-history-user {
+    color: #666;
+}
+
+.wcpol-history-notes {
+    margin-top: 5px;
+    padding: 5px 10px;
+    background: #f9f9f9;
+    border-radius: 3px;
+    font-size: 13px;
+}
+
+.wcpol-po-actions {
+    margin-top: 30px;
+}
+
+.wcpol-po-actions .button {
+    margin-right: 10px;
+}
+
+/* Inline Messages */
+.wcpol-inline-message {
+    margin: 10px 0;
+    display: none;
+}
+
+.wcpol-inline-message .wcpol-error,
+.wcpol-inline-error {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 10px 15px;
+    border-radius: 3px;
+    border-left: 4px solid #f44336;
+    margin: 10px 0;
+}
+
+.wcpol-inline-message .wcpol-success,
+.wcpol-inline-success {
+    background: #d4edda;
+    color: #155724;
+    padding: 10px 15px;
+    border-radius: 3px;
+    border-left: 4px solid #4CAF50;
+    margin: 10px 0;
+}
+
+.wcpol-inline-message .wcpol-info {
+    background: #d1ecf1;
+    color: #0c5460;
+    padding: 10px 15px;
+    border-radius: 3px;
+    border-left: 4px solid #17a2b8;
+    margin: 10px 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .wcpol-modal-content {
+        width: 95%;
+        margin: 10% auto;
+        padding: 20px;
+    }
+    
+    .shop_table_responsive tbody tr {
+        display: block;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+    }
+    
+    .shop_table_responsive tbody td {
+        display: block;
+        text-align: right;
+        padding: 10px;
+        border: none;
+    }
+    
+    .shop_table_responsive tbody td:before {
+        content: attr(data-title);
+        float: left;
+        font-weight: bold;
+    }
+}
+
+/* Loading Spinner */
+.wcpol-spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #0073aa;
+    border-radius: 50%;
+    animation: wcpol-spin 1s linear infinite;
+    margin: 0 8px;
+    vertical-align: middle;
+}
+
+@keyframes wcpol-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Success State */
+.wcpol-success {
+    background-color: #4caf50 !important;
+    color: white !important;
+    border-color: #4caf50 !important;
+}
+
+/* Vendor Dashboard Responsive */
+.wcpol-vendor-dashboard,
+.wcpol-vendor-po-detail {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+.wcpol-vendor-po-table,
+.wcpol-vendor-items-table,
+.wcpol-vendor-form-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto;
+}
+
+.wcpol-vendor-form-table th,
+.wcpol-vendor-form-table td {
+    padding: 10px;
+    text-align: left;
+}
+
+/* Vendor tables responsive at narrow screens */
+@media (max-width: 1100px) {
+    .wcpol-vendor-dashboard,
+    .wcpol-vendor-po-detail {
+        padding: 10px;
+    }
+    
+    .wcpol-vendor-po-table,
+    .wcpol-vendor-items-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .wcpol-vendor-po-table th,
+    .wcpol-vendor-po-table td,
+    .wcpol-vendor-items-table th,
+    .wcpol-vendor-items-table td {
+        min-width: 100px;
+        padding: 8px;
+    }
+    
+    /* Make sure price inputs don't get too wide */
+    .wcpol-vendor-price-input {
+        max-width: 100px;
+    }
+}
+
+/* Vendor Notes Textarea - Fix resize and layout issues */
+.wcpol-vendor-notes-input {
+    resize: none; /* Disable resize handle completely */
+    min-height: 50px;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 14px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    display: block;
+}
+
+/* Mobile Responsive Enhancements */
+@media (max-width: 480px) {
+    /* Small phones */
+    .wcpol-po-actions .button {
+        display: block;
+        width: 100%;
+        margin: 5px 0 !important;
+        padding: 12px !important;
+        font-size: 16px !important;
+    }
+    
+    .wcpol-vendor-po-actions .button {
+        display: block;
+        width: 100%;
+        margin: 5px 0 !important;
+    }
+    
+    /* Vendor form inputs full width on mobile */
+    .wcpol-vendor-price-input,
+    .wcpol-vendor-notes-input {
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Tablets and larger phones */
+    .wcpol-modal-content {
+        width: 95%;
+        margin: 10% auto;
+        padding: 20px;
+    }
+    
+    .shop_table_responsive tbody tr {
+        display: block;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+    }
+    
+    .shop_table_responsive tbody td {
+        display: block;
+        text-align: right;
+        padding: 10px;
+        border: none;
+    }
+    
+    .shop_table_responsive tbody td:before {
+        content: attr(data-title);
+        float: left;
+        font-weight: bold;
+    }
+    
+    /* Hide the Product label specifically on mobile */
+    .shop_table_responsive tbody td[data-title="Product"]:before {
+        display: none;
+    }
+    
+    /* Adjust padding for Product cells since they don't have labels */
+    .shop_table_responsive tbody td[data-title="Product"] {
+        text-align: left;
+        padding-left: 10px;
+    }
+    
+    /* Vendor dashboard table mobile */
+    .wcpol-vendor-form-table {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    .wcpol-vendor-form-table thead {
+        display: none;
+    }
+    
+    .wcpol-vendor-form-table tbody tr {
+        display: block;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        padding: 10px;
+    }
+    
+    .wcpol-vendor-form-table tbody td {
+        display: block;
+        text-align: left;
+        padding: 5px 0;
+    }
+    
+    .wcpol-vendor-form-table tbody td:before {
+        content: attr(data-label);
+        font-weight: bold;
+        display: inline-block;
+        width: 120px;
+    }
+    
+    /* Touch-friendly button sizing */
+    .button {
+        min-height: 44px;
+        line-height: 1.5;
+    }
+}
+
+@media (max-width: 1024px) {
+    /* Small desktops and landscape tablets */
+    .wcpol-po-detail {
+        padding: 10px;
+    }
+    
+    .wcpol-po-meta {
+        padding: 15px !important;
+    }
+}
