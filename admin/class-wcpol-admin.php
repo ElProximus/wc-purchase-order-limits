@@ -19,7 +19,11 @@ class WCPOL_Admin {
 	/**
 	 * Register the stylesheets for the admin area.
 	 */
-	public function enqueue_styles() {
+	public function enqueue_styles( $hook_suffix = '' ) {
+		if ( ! $this->is_wcpol_admin_screen( $hook_suffix ) ) {
+			return;
+		}
+
 		wp_enqueue_style(
 			$this->plugin_name,
 			WCPOL_PLUGIN_URL . 'assets/css/wcpol-admin.css',
@@ -32,11 +36,15 @@ class WCPOL_Admin {
 	/**
 	 * Register the JavaScript for the admin area.
 	 */
-	public function enqueue_scripts() {
+	public function enqueue_scripts( $hook_suffix = '' ) {
+		if ( ! $this->is_wcpol_admin_screen( $hook_suffix ) ) {
+			return;
+		}
+
 		wp_enqueue_script(
 			$this->plugin_name,
 			WCPOL_PLUGIN_URL . 'assets/js/wcpol-admin.js',
-			array( 'jquery' ),
+			array( 'jquery', 'jquery-ui-datepicker' ),
 			$this->version,
 			false
 		);
@@ -49,6 +57,20 @@ class WCPOL_Admin {
 				'nonce'    => wp_create_nonce( 'wcpol_admin_nonce' ),
 			)
 		);
+	}
+
+	/**
+	 * Check whether the current admin page belongs to this plugin.
+	 *
+	 * @param string $hook_suffix Current admin hook suffix.
+	 * @return bool
+	 */
+	private function is_wcpol_admin_screen( $hook_suffix ) {
+		if ( empty( $hook_suffix ) ) {
+			return false;
+		}
+
+		return false !== strpos( $hook_suffix, 'wcpol-' );
 	}
 
 	/**

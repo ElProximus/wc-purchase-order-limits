@@ -3,7 +3,7 @@
  * Plugin Name: WC Purchase Order Limits
  * Plugin URI: https://example.com/wc-purchase-order-limits
  * Description: Adds purchase order limits to WooCommerce with multi-vendor support via LS Vendors and BuddyBoss notifications
- * Version: 1.1.0
+ * Version: 1.2.3
  * Author: Your Name
  * Author URI: https://example.com
  * License: GPL v2 or later
@@ -22,7 +22,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // Define plugin constants
-define( 'WCPOL_VERSION', '1.2.0' );
+define( 'WCPOL_VERSION', '1.2.3' );
 define( 'WCPOL_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WCPOL_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'WCPOL_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );

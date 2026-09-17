@@ -107,8 +107,8 @@ class WCPOL_Core {
 		$plugin_settings = new WCPOL_Settings( $this->get_plugin_name(), $this->get_version() );
 
 		// Admin scripts and styles
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles', 10, 1 );
+		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts', 10, 1 );
 
 		// Admin menu
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_admin_menu' );

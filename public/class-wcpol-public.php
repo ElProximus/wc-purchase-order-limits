@@ -20,6 +20,10 @@ class WCPOL_Public {
 	 * Register the stylesheets for the public-facing side.
 	 */
 	public function enqueue_styles() {
+		if ( ! $this->should_enqueue_public_assets() ) {
+			return;
+		}
+
 		wp_enqueue_style(
 			$this->plugin_name,
 			WCPOL_PLUGIN_URL . 'assets/css/wcpol-public.css',
@@ -44,6 +48,10 @@ class WCPOL_Public {
 	 * Register the JavaScript for the public-facing side.
 	 */
 	public function enqueue_scripts() {
+		if ( ! $this->should_enqueue_public_assets() ) {
+			return;
+		}
+
 		wp_enqueue_script(
 			$this->plugin_name,
 			WCPOL_PLUGIN_URL . 'assets/js/wcpol-public.js',
@@ -741,6 +749,35 @@ class WCPOL_Public {
 			return false;
 		}
 		return has_shortcode( $post->post_content, 'wcpol_po_request' );
+	}
+
+	/**
+	 * Check whether public assets are needed on the current request.
+	 *
+	 * @return bool
+	 */
+	private function should_enqueue_public_assets() {
+		if ( $this->is_po_request_page() || $this->page_has_po_shortcode() ) {
+			return true;
+		}
+
+		if ( function_exists( 'is_cart' ) && is_cart() ) {
+			return true;
+		}
+
+		if ( function_exists( 'is_checkout' ) && is_checkout() ) {
+			return true;
+		}
+
+		if ( function_exists( 'is_account_page' ) && is_account_page() ) {
+			return true;
+		}
+
+		if ( function_exists( 'is_wc_endpoint_url' ) && is_wc_endpoint_url( 'purchase-orders' ) ) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
