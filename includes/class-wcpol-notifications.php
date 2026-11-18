@@ -1,12 +1,45 @@
 <?php
 /**
- * BuddyBoss notifications integration
+ * Notifications for purchase orders: the site's notification list (LS Authors)
+ * when it is active, otherwise BuddyBoss notifications.
  *
  * @package    WC_Purchase_Order_Limits
  * @subpackage WC_Purchase_Order_Limits/includes
  */
 
 class WCPOL_Notifications {
+
+	/**
+	 * Whether any notification list is available.
+	 *
+	 * @return bool
+	 */
+	private function can_notify() {
+		return function_exists( 'ls_authors_notify' ) || function_exists( 'bp_notifications_add_notification' );
+	}
+
+	/**
+	 * Add one notification (same arguments as bp_notifications_add_notification()).
+	 *
+	 * @param array $args user_id, item_id, secondary_item_id, component_action, …
+	 */
+	private function add( array $args ) {
+		if ( function_exists( 'ls_authors_notify' ) ) {
+			$n = $this->format_notifications( '', $args['item_id'], $args['secondary_item_id'], 1, 'array', $args['component_action'], 'wcpol' );
+			ls_authors_notify(
+				(int) $args['user_id'],
+				'quote',
+				array(
+					'text'      => is_array( $n ) ? $n['text'] : wp_strip_all_tags( (string) $n ),
+					'url'       => is_array( $n ) ? $n['link'] : wc_get_account_endpoint_url( 'purchase-orders' ),
+					'object_id' => (int) $args['item_id'],
+					'push'      => true,
+				)
+			);
+			return;
+		}
+		bp_notifications_add_notification( $args );
+	}
 
 	/**
 	 * Register component with BuddyBoss
@@ -111,7 +144,7 @@ class WCPOL_Notifications {
 	 * Send notification when PO is created
 	 */
 	public function notify_customer_po_created( $po_id, $user_id ) {
-		if ( ! function_exists( 'bp_notifications_add_notification' ) ) {
+		if ( ! $this->can_notify() ) {
 			return;
 		}
 
@@ -119,14 +152,14 @@ class WCPOL_Notifications {
 			return;
 		}
 
-		bp_notifications_add_notification(
+		$this->add(
 			array(
 				'user_id'           => $user_id,
 				'item_id'           => $po_id,
 				'secondary_item_id' => 1, // Admin user ID so notification appears from admin
 				'component_name'    => 'wcpol',
 				'component_action'  => 'po_created',
-				'date_notified'     => bp_core_current_time(),
+				'date_notified'     => current_time( 'mysql', true ),
 				'is_new'            => 1,
 			)
 		);
@@ -136,7 +169,7 @@ class WCPOL_Notifications {
 	 * Send notification when PO is approved
 	 */
 	public function notify_customer_po_approved( $po_id, $user_id ) {
-		if ( ! function_exists( 'bp_notifications_add_notification' ) ) {
+		if ( ! $this->can_notify() ) {
 			return;
 		}
 
@@ -144,14 +177,14 @@ class WCPOL_Notifications {
 			return;
 		}
 
-		bp_notifications_add_notification(
+		$this->add(
 			array(
 				'user_id'           => $user_id,
 				'item_id'           => $po_id,
 				'secondary_item_id' => 1, // Admin user ID so notification appears from admin
 				'component_name'    => 'wcpol',
 				'component_action'  => 'po_approved',
-				'date_notified'     => bp_core_current_time(),
+				'date_notified'     => current_time( 'mysql', true ),
 				'is_new'            => 1,
 			)
 		);
@@ -161,7 +194,7 @@ class WCPOL_Notifications {
 	 * Send notification when PO is rejected
 	 */
 	public function notify_customer_po_rejected( $po_id, $user_id ) {
-		if ( ! function_exists( 'bp_notifications_add_notification' ) ) {
+		if ( ! $this->can_notify() ) {
 			return;
 		}
 
@@ -169,14 +202,14 @@ class WCPOL_Notifications {
 			return;
 		}
 
-		bp_notifications_add_notification(
+		$this->add(
 			array(
 				'user_id'           => $user_id,
 				'item_id'           => $po_id,
 				'secondary_item_id' => 0,
 				'component_name'    => 'wcpol',
 				'component_action'  => 'po_rejected',
-				'date_notified'     => bp_core_current_time(),
+				'date_notified'     => current_time( 'mysql', true ),
 				'is_new'            => 1,
 			)
 		);
@@ -190,7 +223,7 @@ class WCPOL_Notifications {
 		// Reason: Vendor dashboard not ready for mobile app experience yet
 		// To re-enable: Uncomment the code below
 		/*
-		if ( ! function_exists( 'bp_notifications_add_notification' ) ) {
+		if ( ! $this->can_notify() ) {
 			return;
 		}
 
@@ -203,14 +236,14 @@ class WCPOL_Notifications {
 			return;
 		}
 
-		bp_notifications_add_notification(
+		$this->add(
 			array(
 				'user_id'           => $vendor_id,
 				'item_id'           => $po_id,
 				'secondary_item_id' => 1, // Admin user ID so notification appears from admin
 				'component_name'    => 'wcpol',
 				'component_action'  => 'new_po_request',
-				'date_notified'     => bp_core_current_time(),
+				'date_notified'     => current_time( 'mysql', true ),
 				'is_new'            => 1,
 			)
 		);
@@ -221,12 +254,16 @@ class WCPOL_Notifications {
 	 * Mark notifications as read when viewing PO
 	 */
 	public function mark_notifications_read( $po_id, $user_id = null ) {
-		if ( ! function_exists( 'bp_notifications_mark_notifications_by_item_id' ) ) {
-			return;
-		}
-
 		if ( ! $user_id ) {
 			$user_id = get_current_user_id();
+		}
+
+		if ( function_exists( 'ls_authors_mark_object_read' ) ) {
+			ls_authors_mark_object_read( $user_id, 'quote', $po_id );
+		}
+
+		if ( ! function_exists( 'bp_notifications_mark_notifications_by_item_id' ) ) {
+			return;
 		}
 
 		bp_notifications_mark_notifications_by_item_id(
@@ -256,7 +293,7 @@ class WCPOL_Notifications {
 	 * Send notification when vendor creates and sends PO to customer
 	 */
 	public function notify_customer_vendor_po_created( $po_id, $user_id, $vendor_id ) {
-		if ( ! function_exists( 'bp_notifications_add_notification' ) ) {
+		if ( ! $this->can_notify() ) {
 			return;
 		}
 
@@ -264,14 +301,14 @@ class WCPOL_Notifications {
 			return;
 		}
 
-		bp_notifications_add_notification(
+		$this->add(
 			array(
 				'user_id'           => $user_id,
 				'item_id'           => $po_id,
 				'secondary_item_id' => $vendor_id,
 				'component_name'    => 'wcpol',
 				'component_action'  => 'vendor_po_created',
-				'date_notified'     => bp_core_current_time(),
+				'date_notified'     => current_time( 'mysql', true ),
 				'is_new'            => 1,
 			)
 		);
@@ -281,7 +318,7 @@ class WCPOL_Notifications {
 	 * Send notifications to vendors when customer approves PO
 	 */
 	public function notify_vendors_po_approved( $po_id, $customer_id ) {
-		if ( ! function_exists( 'bp_notifications_add_notification' ) ) {
+		if ( ! $this->can_notify() ) {
 			return;
 		}
 
@@ -314,14 +351,14 @@ class WCPOL_Notifications {
 
 		// Send notification to each vendor
 		foreach ( $vendors as $vendor_id ) {
-			bp_notifications_add_notification(
+			$this->add(
 				array(
 					'user_id'           => $vendor_id,
 					'item_id'           => $po_id,
 					'secondary_item_id' => $customer_id, // Customer ID for message creation
 					'component_name'    => 'wcpol',
 					'component_action'  => 'vendor_po_approved',
-					'date_notified'     => bp_core_current_time(),
+					'date_notified'     => current_time( 'mysql', true ),
 					'is_new'            => 1,
 				)
 			);

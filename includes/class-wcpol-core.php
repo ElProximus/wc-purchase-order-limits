@@ -38,7 +38,10 @@ class WCPOL_Core {
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
-		$this->define_vendor_hooks();
+		// The vendor quote pages only exist while a vendor plugin is running.
+		if ( class_exists( 'LSV_Vendors' ) || class_exists( 'WC_Vendors' ) || class_exists( 'WCV_Vendors' ) ) {
+			$this->define_vendor_hooks();
+		}
 		$this->define_notification_hooks();
 	}
 

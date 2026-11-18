@@ -79,17 +79,7 @@ function run_wc_purchase_order_limits() {
 			return;
 		}
 
-		// Check if LS Vendors (or WC Vendors for backwards compat) is active.
-		if ( ! class_exists( 'LSV_Vendors' ) && ! class_exists( 'WC_Vendors' ) && ! class_exists( 'WCV_Vendors' ) ) {
-			add_action( 'admin_notices', 'wcpol_wc_vendors_missing_notice' );
-			return;
-		}
-
-		// Check if BuddyBoss Platform is active - check for BuddyBoss or BuddyPress
-		if ( ! class_exists( 'BuddyPress' ) && ! function_exists( 'buddypress' ) ) {
-			add_action( 'admin_notices', 'wcpol_buddyboss_missing_notice' );
-			return;
-		}
+		// Vendors and BuddyBoss are optional: without them purchase orders are handled by the shop.
 
 		// Check if required files exist before loading
 		$core_file = WCPOL_PLUGIN_DIR . 'includes/class-wcpol-core.php';
